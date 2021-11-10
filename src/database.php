@@ -26,6 +26,7 @@ function login($conn, $email, $passwd): bool
                 }
             if ($res) {
                 // establim sessió
+                $_SESSION['uid'] = $user['id'];
                 $_SESSION['uname'] = $user['uname'];
                 $_SESSION['email'] = $user['email'];
                 // retornem true
@@ -98,4 +99,49 @@ function register($conn, $email, $username, $role, $hashedpassword): bool
         $_SESSION['error'] = "El botón submit no está configurado";
         header('location:?url=register');
     }
+}
+
+function addTask($conn, $task, $user): bool
+{
+    try {
+            $stmt = $conn->prepare('INSERT INTO tasks(task, user) values(?, ?)');
+
+            if ($stmt->execute([$task, $user])) {
+                return true;
+            } else {
+                echo $stmt->error;
+            }
+    } catch (PDOException $e) {
+        return false;
+    }
+}
+
+function deleteTask($conn, $idtask): bool
+{
+    try {
+        $stmt = $conn->prepare('DELETE FROM tasks WHERE id='.$idtask);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            echo $stmt->error;
+        }
+} catch (PDOException $e) {
+    return false;
+}
+}
+
+function editTask($conn, $idtask, $task): bool
+{
+    try {
+        $stmt = $conn->prepare("UPDATE tasks SET task='$task' WHERE id=".$idtask);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            echo $stmt->error;
+        }
+} catch (PDOException $e) {
+    return false;
+}
 }

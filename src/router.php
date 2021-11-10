@@ -22,6 +22,10 @@
                 return 'dashboard';
             case 'cookies':
                 return 'cookies';
+            case 'profile':
+                return 'profile';
+            case 'task_action':
+                return 'task_action';
             default:
                 return 'home';
         }

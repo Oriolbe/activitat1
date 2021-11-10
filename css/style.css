@@ -76,24 +76,82 @@ body{
     background-color: #191a1c;
 }
 
-form{
+.register-message{
+    color: white;
+}
+
+.login-message{
+    color: white;
+}
+
+.login-register{
+    margin-top: 5vh;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.container-todo{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.task-form{
+    margin: 5vh 2vw;
+}
+
+.task-status{
+    color: white;
+}
+
+.container-table{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    margin: 5vh 2vw;
+}
+
+.table-tasks{
+    width: 100%;
+    height: 100%;
+}
+
+.table-tasks th{
+    color: #ff6740;
+    font-size: 25px;
+}
+
+.table-tasks td{
+    display: table-cell;
+    color: white;
+    text-align: center;
+}
+
 input[type=text], input[type=email],  input[type=password]{
-    width: 20%;
     padding: 12px 20px;
+    color: white;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
     box-sizing: border-box;
-  }
-  
-  button[type=submit] {
+    border: 2px solid #191a1c;
+    border-radius: 0px;
+    background: #2c2c2c;
+}
+
+.input-login-register{
     width: 20%;
+}
+
+.button-login-register{
+    width: 20%;
+}
+
+input[type=text]:focus, input[type=email]:focus,  input[type=password]:focus{
+    outline: 1px solid #ff6740;
+}
+
+  button[type=submit] {
     background-color: #ff6740;
     color: white;
     padding: 14px 20px;
@@ -107,6 +165,9 @@ input[type=text], input[type=email],  input[type=password]{
     background-color: #ff8c40;
   }
   
+::placeholder{
+    color: white;
+}
 
 #close_cookie{display:none;}
 	#close_cookie:checked + #cookie_consent_popup{display:none;}	
